@@ -221,22 +221,19 @@ private class NewMemberCell: UICollectionViewCell {
         removeButton.autoSetDimensions(to: CGSize(square: buttonSize))
         removeButton.setContentHuggingHigh()
 
-        contentView.addSubview(avatarView)
-        avatarView.autoPinEdge(toSuperviewEdge: .leading)
-        avatarView.autoPinEdge(toSuperviewMargin: .top, relation: .greaterThanOrEqual)
-        avatarView.autoPinEdge(toSuperviewMargin: .bottom, relation: .greaterThanOrEqual)
-
         let stackView = UIStackView(arrangedSubviews: [
+            avatarView,
             textLabel,
             removeButton
         ])
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.layoutMargins = UIEdgeInsets(top: Self.vMargin, leading: 4, bottom: Self.vMargin, trailing: 2)
+        stackView.layoutMargins = UIEdgeInsets(margin: 2)
         stackView.isLayoutMarginsRelativeArrangement = true
         contentView.addSubview(stackView)
+        stackView.setCustomSpacing(4, after: avatarView)
         stackView.autoPinLeading(toTrailingEdgeOf: avatarView)
-        stackView.autoPinEdges(toSuperviewMarginsExcludingEdge: .leading)
+        stackView.autoPinEdgesToSuperviewEdges()
         stackView.setContentHuggingHorizontalLow()
         stackView.setCompressionResistanceHorizontalLow()
     }
